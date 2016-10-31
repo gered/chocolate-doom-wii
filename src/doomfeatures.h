@@ -29,7 +29,9 @@
 
 // Enables multiplayer support (network games)
 
+#ifndef GEKKO
 #define FEATURE_MULTIPLAYER 1
+#endif
 
 // Enables sound output
 
