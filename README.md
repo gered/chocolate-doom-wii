@@ -4,7 +4,15 @@ A port of [Chocolate Doom](https://github.com/chocolate-doom/chocolate-doom) to 
 
 **This is still in the early stages. It compiles, but a number of things (controls, WAD selection, configuration, etc) are not ready yet.**
 
-**Doom is being worked on first, Hexen, Heretic and Strike will follow next.**
+**Doom is being worked on first, Hexen, Heretic and Strife will follow next.**
+
+### TODO
+
+* Controls. Nothing has been ported yet (code still assumes PC controls at the moment).
+* Config/setup.
+* WAD selection. Currently auto-scans for available IWADs.
+* Save game selection tweaks for console-friendlyness.
+* Hexen/Heretic/Strife
 
 ### Why
 
@@ -23,4 +31,4 @@ You'll need [devkitPro](http://devkitpro.org/) of course. Make sure devkitPPC, l
 
 Lastly you'll need my fork of [SDL-Wii](https://github.com/gered/sdl-wii) which for right now you will need to compile and install manually (`make && make install`).
 
-Now a `chocolate-doom-wii.dol` can be build via `make -f Makefile.doom`.
+Now a `chocolate-doom-wii.dol` can be built via `make -f Makefile.doom`.
