@@ -8,13 +8,13 @@ A port of [Chocolate Doom](https://github.com/chocolate-doom/chocolate-doom) to 
 
 ### Why
 
-There are a couple other ports of Doom to the Wii, but they either include a number of mods / "enhancements", don't support the controller I want to use (GameCube controller), don't run at the TV resolution (240p) I want, or they blur the video buffer unnecessarily, or .... well, I could go on.
+There are a couple other ports of Doom to the Wii, but they either include a number of mods / "enhancements", don't support the controller I want to use (GameCube controller), don't run at the TV resolution (240p) I want, or they blur the video buffer unnecessarily with some filter (either intentionally or not), or .... well, I could go on.
 
 Basically, I wanted a port that:
 
 * Is a _vanilla_ port of Doom. I want to play the same game I played in the 90's with all the same bugs and quirks intact. None of this bullshit with random arbitrary bugfixes, mods, "enhancements" or whatever else.
-* I want to use a GameCube controller. I don't want to have to plug in a USB keyboard or need to use batteries with a Wiimote + Classic Controller. Ugh.
-* I want to play on a 240p resolution because I play all my retro games on CRT TVs. This probably goes against my "vanilla" requirement above as none of us played Doom this was in the 90's, but after seeing it recently for myself I instantly feel in love with the look and wanted to do it for myself. However, this should be optional and 2x scaled to 480p should also work for play on modern HDTVs.
+* Works with a GameCube controller. I don't want to have to plug in a USB keyboard or need to use batteries with a Wiimote + Classic Controller. Ugh.
+* Can be played using a 240p resolution because I play all my retro games on a CRT TV. This probably goes against my "vanilla" requirement above as none of us played Doom this way in the 90's, but after seeing it recently for myself I instantly feel in love with the look and wanted to do it for myself. However, this should be optional and 2x scaled to 480p should also work for play on modern HDTVs.
 
 
 ### Building
