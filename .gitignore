@@ -36,3 +36,12 @@ tags
 .#*
 .*.swp
 .DS_store
+
+build/
+/*.dol
+/*.elf
+
+# IDE project files
+*.vpj
+*.vpw*
+*.vtg
