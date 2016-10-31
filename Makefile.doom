@@ -17,9 +17,12 @@ include $(DEVKITPPC)/wii_rules
 #---------------------------------------------------------------------------------
 TARGET      := $(notdir $(CURDIR))
 BUILD       := build
-SOURCES     := src src/doom
-DATA        := #data  
-INCLUDES    := .
+SOURCES     := src src/doom textscreen opl pcsound
+DATA        := 
+INCLUDES    := src textscreen opl pcsound
+
+EXCLUDED_SRC_FILES := src/d_dedicated.c \
+                      src/z_native.c
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -33,7 +36,7 @@ LDFLAGS     = -g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS        := lSDL_ttf -lSDL_mixer -lSDL_image -lfreetype -ljpeg -lpng -lz -lSDL -lwiiuse -lbte -lfat -logc -lm -lwiikeyboard -ldb
+LIBS        := -lSDL_mixer -lsmpeg -lSDL_net -lSDL -lvorbisidec -lpng -ljpeg -lz -lwiiuse -lbte -lfat -logc -lm -lwiikeyboard -lstdc++ -ldb
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -58,10 +61,11 @@ export DEPSDIR  := $(CURDIR)/$(BUILD)
 #---------------------------------------------------------------------------------
 # automatically build a list of object files for our project
 #---------------------------------------------------------------------------------
-CFILES      := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
-CPPFILES    := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
-sFILES      := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
-SFILES      := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.S)))
+
+CFILES      := $(foreach dir,$(SOURCES),$(notdir $(filter-out $(EXCLUDED_SRC_FILES), $(wildcard $(dir)/*.c))))
+CPPFILES    := $(foreach dir,$(SOURCES),$(notdir $(filter-out $(EXCLUDED_SRC_FILES), $(wildcard $(dir)/*.cpp))))
+sFILES      := $(foreach dir,$(SOURCES),$(notdir $(filter-out $(EXCLUDED_SRC_FILES), $(wildcard $(dir)/*.s))))
+SFILES      := $(foreach dir,$(SOURCES),$(notdir $(filter-out $(EXCLUDED_SRC_FILES), $(wildcard $(dir)/*.S))))
 BINFILES    := $(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
 
 #---------------------------------------------------------------------------------
@@ -82,8 +86,10 @@ export OFILES   := $(addsuffix .o,$(BINFILES)) \
 #---------------------------------------------------------------------------------
 export INCLUDE  := $(foreach dir,$(INCLUDES), -iquote $(CURDIR)/$(dir)) \
                    $(foreach dir,$(LIBDIRS),-I$(dir)/include) \
+		    -I$(CURDIR) \
                     -I$(CURDIR)/$(BUILD) \
-                    -I$(LIBOGC_INC)
+                    -I$(LIBOGC_INC) \
+		    -I$(LIBOGC_INC)/SDL
 
 #---------------------------------------------------------------------------------
 # build a list of library paths
