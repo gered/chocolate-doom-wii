@@ -26,6 +26,12 @@
 #include "i_system.h"
 #include "m_argv.h"
 
+#ifdef GEKKO
+#include <gccore.h>
+#include <fat.h>
+#include <debug.h>
+#endif
+
 //
 // D_DoomMain()
 // Not a globally visible function, just included for source reference,
@@ -36,7 +42,16 @@ void D_DoomMain (void);
 
 int main(int argc, char **argv)
 {
-    // save arguments
+#ifdef GEKKO
+#ifdef DEBUG_GDB
+	DEBUG_Init(GDBSTUB_DEVICE_USB, 1);
+	_break();
+#endif
+
+	fatInitDefault();
+#endif
+
+	// save arguments
 
     myargc = argc;
     myargv = argv;

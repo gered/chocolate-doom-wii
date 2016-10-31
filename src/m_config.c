@@ -2098,6 +2098,11 @@ static char *GetDefaultConfigDir(void)
     }
     else
 #endif /* #ifndef _WIN32 */
+#ifdef GEKKO
+	{
+        return M_StringDuplicate("sd:/apps/chocolate-doom/");
+    }
+#endif
     {
         return M_StringDuplicate("");
     }
