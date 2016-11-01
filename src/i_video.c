@@ -1874,7 +1874,7 @@ static void SetVideoMode(screen_mode_t *mode, int w, int h)
 
     // Set the video mode.
 
-    flags |= SDL_SWSURFACE | SDL_DOUBLEBUF;
+    flags |= SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_USE240P;
 
     if (screen_bpp == 8)
     {
