@@ -178,6 +178,8 @@ char *M_TempFile(char *s)
     {
         tempdir = ".";
     }
+#elif GEKKO
+	tempdir = "sd:/apps/chocolate-doom";
 #else
     // In Unix, just use /tmp.
 
