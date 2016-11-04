@@ -13,7 +13,7 @@ static GXRModeObj *rmode = NULL;
 
 void DOL_Init()
 {
-#ifdef DEBUG_GDB
+#ifdef DEBUG_USBGECKO
 	DEBUG_Init(GDBSTUB_DEVICE_USB, 1);
 	_break();
 #endif
