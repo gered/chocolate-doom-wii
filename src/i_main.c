@@ -27,9 +27,7 @@
 #include "m_argv.h"
 
 #ifdef GEKKO
-#include <gccore.h>
-#include <fat.h>
-#include <debug.h>
+#include "dol_init.h"
 #endif
 
 //
@@ -42,19 +40,14 @@ void D_DoomMain (void);
 
 int main(int argc, char **argv)
 {
-#ifdef GEKKO
-#ifdef DEBUG_GDB
-	DEBUG_Init(GDBSTUB_DEVICE_USB, 1);
-	_break();
-#endif
-
-	fatInitDefault();
-#endif
-
 	// save arguments
 
     myargc = argc;
     myargv = argv;
+
+#ifdef GEKKO
+	DOL_Init();
+#endif
 
     M_FindResponseFile();
 
